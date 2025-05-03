@@ -17,10 +17,15 @@ type Tree[T any] struct {
 	comparator Comparator[T]
 }
 
+/*
+NewTree creates and returns a new instance of Tree using the provided comparator function.
+The comparator function determines the order of elements within the tree.
+*/
 func NewTree[T any](cmp Comparator[T]) *Tree[T] {
 	return &Tree[T]{comparator: cmp}
 }
 
+/* Add adds a new node with the given value to the tree, keeping the tree balanced. */
 func (t *Tree[T]) Add(value T) {
 	node := &TreeNode[T]{Value: value}
 
@@ -47,10 +52,17 @@ func (t *Tree[T]) Add(value T) {
 	}
 }
 
+/* PrintTree prints the tree in a visually appealing format. */
 func (t *Tree[T]) PrintTree() {
 	printPrettyTree(t.Root, "", true)
 }
 
+/*
+printPrettyTree prints a tree in a visually appealing format, with each node
+indented underneath its parent and connected by lines. The isTail parameter
+indicates whether the node is the last child of its parent, and is used to
+determine which type of line to draw.
+*/
 func printPrettyTree[T any](node *TreeNode[T], prefix string, isTail bool) {
 	if node == nil {
 		return
@@ -74,6 +86,7 @@ func ternary(cond bool, a, b string) string {
 	return b
 }
 
+/* InOrder performs an in-order traversal of the tree and prints each node's value. */
 func (t *Tree[T]) InOrder() {
 	t.inOrder(t.Root)
 	fmt.Println()

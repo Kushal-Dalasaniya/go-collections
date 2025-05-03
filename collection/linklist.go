@@ -14,10 +14,12 @@ type LinkedList[T comparable] struct {
 	Tail *Node[T]
 }
 
+/* NewLinkedList creates and returns a new, empty linked list. */
 func NewLinkedList[T comparable]() *LinkedList[T] {
 	return &LinkedList[T]{Head: nil, Tail: nil}
 }
 
+/* Add adds a value to the end of the linked list. */
 func (l *LinkedList[T]) Add(value T) {
 	node := &Node[T]{Value: value, Next: nil}
 	if l.Head == nil {
@@ -29,6 +31,7 @@ func (l *LinkedList[T]) Add(value T) {
 	}
 }
 
+/* Remove removes the first occurrence of the given value in the linked list and returns true if it is found, otherwise false. */
 func (l *LinkedList[T]) Remove(value T) bool {
 	if l.Head == nil {
 		return false
@@ -53,6 +56,7 @@ func (l *LinkedList[T]) Remove(value T) bool {
 	return false
 }
 
+/* Search checks if a given value exists in the linked list and returns true if it does, otherwise false. */
 func (l *LinkedList[T]) Search(value T) bool {
 	node := l.Head
 	for node != nil {
@@ -64,6 +68,7 @@ func (l *LinkedList[T]) Search(value T) bool {
 	return false
 }
 
+/* Print prints out the linked list, with each node separated by an arrow (->). */
 func (l *LinkedList[T]) Print() {
 	node := l.Head
 	for node.Next != nil {

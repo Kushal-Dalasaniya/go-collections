@@ -49,6 +49,7 @@ func (s *Stack[T]) Size() int {
 	return len(s.items)
 }
 
+/* Print prints out the stack, with each item separated by a space. */
 func (s *Stack[T]) Print() {
 	fmt.Printf("%v\n", s.items)
 }

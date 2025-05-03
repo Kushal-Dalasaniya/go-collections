@@ -2,9 +2,30 @@ package main
 
 import (
 	"collections/collection"
+	"fmt"
 )
 
 func main() {
+	stack := collection.NewStack[int]()
+	stack.Push(1)
+	stack.Push(2)
+	fmt.Println(stack.Pop()) // Output: 2
+
+	queue := collection.NewQueue[int]()
+	queue.Enqueue(1)
+	queue.Enqueue(2)
+	fmt.Println(queue.Dequeue()) // Output: 1
+
+	list := collection.NewLinkedList[int]()
+	list.Add(1)
+	list.Add(2)
+	list.Print() // Output: 1 -> 2
+
+	set := collection.NewSet[int]()
+	set.Add(1)
+	set.Add(2)
+	fmt.Println(set.Contains(1)) // Output: true
+
 	tree := collection.NewTree[int](
 		func(a, b int) int {
 			return a - b
